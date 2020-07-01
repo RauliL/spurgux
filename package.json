@@ -1,0 +1,11 @@
+{
+  "name": "spurgux",
+  "version": "1.0.0",
+  "description": "js-dos version of classic Spurgux game",
+  "scripts": {
+    "start": "serve ./public"
+  },
+  "dependencies": {
+    "serve": "^11.3.2"
+  }
+}
