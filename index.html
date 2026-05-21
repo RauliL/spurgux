@@ -3,35 +3,34 @@
 <head>
   <meta charset="utf-8">
   <title>SpurguX</title>
-  <script src="js-dos.js"></script>
+  <meta name="description" content="Tositapahtumiin perustuva seikkailupeli, jossa antisankari kahlaa kaupunginosien halki etsien konjakkipulloa, jonka huhutaan olevan tasolla 50, seuranaan ainoastaan kova jano.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://v8.js-dos.com/latest/js-dos.css">
   <style>
     body {
-      background: #000000;
+      background: #000000 !important;
     }
 
-    canvas {
-      width: 640px;
-      height: 400px;
+    #dos {
+      width: 100vw;
+      height: 60vw;
+    }
+
+    @media (min-width: 1200px) {
+      #dos {
+        height: 60vh;
+      }
     }
   </style>
 </head>
 <body>
-  <canvas id="jsdos"></canvas>
+  <script src="https://v8.js-dos.com/latest/js-dos.js"></script>
+  <div id="dos"></div>
   <script>
-    Dos(document.getElementById("jsdos")).ready((fs, main) => {
-      fs.createFile("dosbox.conf", `
-        [speaker]
-        pcspeaker=false
-
-        [dos]
-        keyboardlayout=sv
-      `);
-      fs.extract("spurgux.zip").then(() => {
-        main([
-          "-conf", "dosbox.conf",
-          "-c", "spu.com",
-        ])
-      });
+    Dos(document.getElementById("dos"), {
+      autoStart: true,
+      kiosk: true,
+      url: "/spurgux.jsdos"
     });
   </script>
 </body>
